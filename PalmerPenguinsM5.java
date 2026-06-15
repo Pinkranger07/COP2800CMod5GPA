@@ -1,7 +1,8 @@
 // PalmerPenguinsM5.java
-// 
-// 
-// Reads the CSV file and parses the data into arrays
+// Nyesha Littles
+// 6/14/2026
+// Counts penguin species from a CSV file using Java arrays
+
 
 import java.io.*;
 import java.util.*;
@@ -27,18 +28,18 @@ public class PalmerPenguinsM5 {
         // TODO 1 Declare a String array named speciesData which stores the
         //        results of calling CSVReader.readFile to read column 1
         //        from the data file. Replace the ellipsis (...) with the 
-        //        array declaration.
-        ... = CSVReader.readFile(FILE_NAME, 1);
+        //        array declaration. [cite: 100, 101]
+        String[] speciesData = CSVReader.readFile(FILE_NAME, 1);
         
         // store the counts of each species in this array
         // TODO 2 Declare an int array named speciesCount 
-        //        with a size declarator of NUM_SPECIES.
-        
+        //        with a size declarator of NUM_SPECIES. [cite: 103]
+        int[] speciesCount = new int[NUM_SPECIES];
 
         // exit if no data was found
         // TODO 3 encode an if statement to determine if the 
-        //        length of the speciesData array is 0
-
+        //        length of the speciesData array is 0 [cite: 105]
+        if (speciesData.length == 0) {
             System.out.println("Error: The file is empty or could not be read.");
             return;
         }
@@ -47,8 +48,8 @@ public class PalmerPenguinsM5 {
         // TODO 4 encode an enhanced for loop (also known as a foreach loop
         //        which iterates through the speciesData array using a loop
         //        variable named species of type String. Replace the 
-        //        ellipsis (...) with the for loop header
-        ... {
+        //        ellipsis (...) with the for loop header [cite: 107]
+        for (String species : speciesData) {
             if (species.equals(SP_CHINSTRAP)) {
                 speciesCount[SP_CHINSTRAP_INDEX]++;
             } else if (species.equals(SP_GENTOO)) {
@@ -61,9 +62,13 @@ public class PalmerPenguinsM5 {
         // Print the results
         // TODO 5 print the value of each speciesCount array element
         //        using the index constants. Use three separate
-        //        System.out.println statements.
-
-
+        //        System.out.println statements. [cite: 109]
+        System.out.println(SP_CHINSTRAP + " count = " + 
+                           speciesCount[SP_CHINSTRAP_INDEX]);
+        System.out.println(SP_GENTOO + " count = " + 
+                           speciesCount[SP_GENTOO_INDEX]);
+        System.out.println(SP_ADELIE + " count = " + 
+                           speciesCount[SP_ADELIE_INDEX]);
     }
 }
 
@@ -71,14 +76,14 @@ class CSVReader {
     /**
      * readFile reads a file line by line, extracts the specified column from
      * each line, and returns an array containing the extracted values.
-     * 
-     * The file is expected to be delimited by commas. If a line does not contain
+     * * The file is expected to be delimited by commas. If a line does not contain
      * the requested column, an empty string is added for that line.
      *
      * @param FILE_NAME the name (or path) of the file to be read
      * @param column the zero-based index of the column to extract from each line
-     * @return an array of strings containing the extracted column values from each row.
-     *         If an error occurs while reading the file, an empty array is returned.
+     * @return an array of strings containing the extracted column values from 
+     * each row. If an error occurs while reading the file, an empty 
+     * array is returned.
      */
      public static String[] readFile(String FILE_NAME, int column) {
         List<String> columnValues = new ArrayList<>();
